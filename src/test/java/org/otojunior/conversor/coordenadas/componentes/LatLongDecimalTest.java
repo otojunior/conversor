@@ -1,13 +1,15 @@
 /**
  * 
  */
-package org.otojunior.conversor.coordenadas;
+package org.otojunior.conversor.coordenadas.componentes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
+import org.otojunior.conversor.coordenadas.componentes.LatLongDecimal;
+import org.otojunior.conversor.coordenadas.exception.FormatoInvalidoException;
 
 /**
  * @author 01456231650
@@ -16,7 +18,7 @@ import org.junit.Test;
 public class LatLongDecimalTest {
 
 	/**
-	 * Test method for {@link org.otojunior.conversor.coordenadas.LatLongDecimal#valueOf(double, double)}.
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#valueOf(double, double)}.
 	 */
 	@Test
 	public final void testValueOf() {
@@ -26,7 +28,7 @@ public class LatLongDecimalTest {
 	}
 
 	/**
-	 * Test method for {@link org.otojunior.conversor.coordenadas.LatLongDecimal#parse(java.lang.String)}.
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#parse(java.lang.String)}.
 	 */
 	@Test
 	public final void testParseOk() {
@@ -41,7 +43,7 @@ public class LatLongDecimalTest {
 	}
 	
 	/**
-	 * Test method for {@link org.otojunior.conversor.coordenadas.LatLongDecimal#parse(java.lang.String)}.
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#parse(java.lang.String)}.
 	 */
 	@Test
 	public final void testParseException() {
@@ -55,7 +57,7 @@ public class LatLongDecimalTest {
 	}
 
 	/**
-	 * Test method for {@link org.otojunior.conversor.coordenadas.LatLongDecimal#getLatitude()}.
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#getLatitude()}.
 	 */
 	@Test
 	public final void testGetLatitude() {
@@ -64,7 +66,7 @@ public class LatLongDecimalTest {
 	}
 
 	/**
-	 * Test method for {@link org.otojunior.conversor.coordenadas.LatLongDecimal#getLongitude()}.
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#getLongitude()}.
 	 */
 	@Test
 	public final void testGetLongitude() {
@@ -73,11 +75,30 @@ public class LatLongDecimalTest {
 	}
 
 	/**
-	 * Test method for {@link org.otojunior.conversor.coordenadas.LatLongDecimal#toString()}.
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#toString()}.
 	 */
 	@Test
 	public final void testToString() {
 		LatLongDecimal latlong = LatLongDecimal.valueOf(-19.933912, -43.929736);
 		assertEquals("LatLongDecimal[latitude=-19.933912,longitude=-43.929736]", latlong.toString());
+	}
+	
+	/**
+	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#toString()}.
+	 */
+	@Test
+	public final void testToGeografico() {
+		LatLongDecimal latlong = LatLongDecimal.valueOf(-19.933912, -43.929736);
+		LatLongGeografico geografico = latlong.toGeografico();
+		
+		ComponenteGeografico latitude = geografico.getLatitude();
+		assertEquals(19, latitude.getGraus());
+		assertEquals(56, latitude.getMinutos());
+		assertEquals(2.083, latitude.getSegundos(), 0);
+		
+		ComponenteGeografico longitude = geografico.getLongitude();
+		assertEquals(43, longitude.getGraus());
+		assertEquals(55, longitude.getMinutos());
+		assertEquals(47.05, longitude.getSegundos(), 0);
 	}
 }

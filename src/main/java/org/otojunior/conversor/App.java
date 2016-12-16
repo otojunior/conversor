@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Application Main Class.
+ *
  * @author [Author name]
+ * @version $Id: $Id
  */
 public class App {
 	/**
@@ -18,12 +20,13 @@ public class App {
 	
 	/**
 	 * Application main method.
+	 *
 	 * @param args Command line arguments.
 	 */
 	public static void main(String[] args) {
 		LOG.info("conversor Application.");
 		
-		try {
+		/*try {
 			//UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 			String input = JOptionPane.showInputDialog("Latitude e Longitude Decimais (Google Maps)");
 			
@@ -40,6 +43,6 @@ public class App {
 			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-		}
+		}*/
 	}
 }
