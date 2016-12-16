@@ -3,6 +3,8 @@ package org.otojunior.conversor;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.lang3.StringUtils;
+import org.otojunior.conversor.coordenadas.componentes.LatLongDecimal;
+import org.otojunior.conversor.coordenadas.componentes.LatLongGeografico;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,23 +28,23 @@ public class App {
 	public static void main(String[] args) {
 		LOG.info("conversor Application.");
 		
-		/*try {
+		try {
 			//UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 			String input = JOptionPane.showInputDialog("Latitude e Longitude Decimais (Google Maps)");
 			
 			if (StringUtils.isNotBlank(input)) {
-				ConversorGraus calc = new ConversorGraus();
-				String[] coordenadas = calc.toGraus(input);
+				LatLongDecimal latLongDecimal = LatLongDecimal.parse(input);
+				LatLongGeografico latLongGeo = latLongDecimal.toGeografico();
 				
 				StringBuilder str = new StringBuilder();
-				str.append(coordenadas[0]).
+				str.append(latLongGeo.getLatitude().toStringSimples()).
 					append(System.getProperty("line.separator")).
-					append(coordenadas[1]);
+					append(latLongGeo.getLongitude().toStringSimples());
 				
 				JOptionPane.showMessageDialog(null, str.toString());
 			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-		}*/
+		}
 	}
 }

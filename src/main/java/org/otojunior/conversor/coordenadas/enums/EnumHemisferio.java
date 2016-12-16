@@ -10,8 +10,25 @@ package org.otojunior.conversor.coordenadas.enums;
  * @version $Id: $Id
  */
 public enum EnumHemisferio {
-	NORTE,
-	SUL,
-	LESTE,
-	OESTE;
+	NORTE("N"),
+	SUL("S"),
+	LESTE("E"),
+	OESTE("W");
+	
+	private String sigla;
+	
+	/**
+	 * 
+	 * @param sigla
+	 */
+	private EnumHemisferio(String sigla) {
+		this.sigla = sigla;
+	}
+	
+	/**
+	 * 
+	 */
+	public String getSigla() {
+		return sigla;
+	}
 }

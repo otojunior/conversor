@@ -84,4 +84,16 @@ public class ComponenteGeografico {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
+	
+	/** 
+	 * 
+	 */
+	public String toStringSimples() {
+		StringBuilder str = new StringBuilder();
+		str.append(graus).append("° ").
+			append(minutos).append("\' ").
+			append(segundos).append("\" ").
+			append(hemisferio.getSigla());
+		return str.toString();
+	}
 }
