@@ -49,8 +49,8 @@ public class ConversorCoordenadasGeo {
 		double segundos = Precision.round((((valorabs - graus) * 60) - minutos) * 60, 3);
 		
 		EnumHemisferio hemisferio = latitude ?
-			(signum > 1) ? EnumHemisferio.NORTE : EnumHemisferio.SUL :
-			(signum > 1) ? EnumHemisferio.LESTE : EnumHemisferio.OESTE;
+			(signum >= 1) ? EnumHemisferio.NORTE : EnumHemisferio.SUL :
+			(signum >= 1) ? EnumHemisferio.LESTE : EnumHemisferio.OESTE;
 		
 		return ComponenteGeografico.valueOf(graus, minutos, segundos, hemisferio);
 	}

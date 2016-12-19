@@ -52,28 +52,21 @@ public class LatLongDecimal {
 		double longitude = 0;
 		String regex = "^-?\\d{1,3}.\\d+,\\s-?\\d{1,3}.\\d+$";
 		boolean formatoInvalido = true;
-		try {
-			if (StringUtils.isNotBlank(string)) {
-				string = string.trim();
-				if (string.matches(regex)) {
-					StringTokenizer tk = new StringTokenizer(string, ",");
-					if (tk.hasMoreTokens()) {
-						String strdouble = tk.nextToken().trim();
-						latitude = Double.parseDouble(strdouble);
-					}
-					if (tk.hasMoreTokens()) {
-						String strdouble = tk.nextToken().trim();
-						longitude = Double.parseDouble(strdouble);
-					}
-					formatoInvalido = false;
+
+		if (StringUtils.isNotBlank(string)) {
+			string = string.trim();
+			if (string.matches(regex)) {
+				StringTokenizer tk = new StringTokenizer(string, ",");
+				if (tk.hasMoreTokens()) {
+					String strdouble = tk.nextToken().trim();
+					latitude = Double.parseDouble(strdouble);
 				}
+				if (tk.hasMoreTokens()) {
+					String strdouble = tk.nextToken().trim();
+					longitude = Double.parseDouble(strdouble);
+				}
+				formatoInvalido = false;
 			}
-		} catch (NumberFormatException e) {
-			/*
-			 * Formato inválido permanece true, para o lançamento da exceção logo abaixo.
-			 * Na prática, esta exceção não deverá ocorrer devido ao teste da string via
-			 * 
-			 */
 		}
 		
 		if (formatoInvalido) {
