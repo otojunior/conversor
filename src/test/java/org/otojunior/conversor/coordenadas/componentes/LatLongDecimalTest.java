@@ -4,11 +4,9 @@
 package org.otojunior.conversor.coordenadas.componentes;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
-import org.otojunior.conversor.coordenadas.componentes.LatLongDecimal;
 import org.otojunior.conversor.coordenadas.exception.FormatoInvalidoException;
 
 /**
@@ -38,22 +36,18 @@ public class LatLongDecimalTest {
 			assertEquals(-19.933912, latlong.getLatitude(), 0);
 			assertEquals(-43.929736, latlong.getLongitude(), 0);
 		} catch (FormatoInvalidoException e) {
-			fail("Não deveria dar exceção");
+			fail("Não deveria dar exceção"); // $COVERAGE-IGNORE$
 		}
 	}
 	
 	/**
 	 * Test method for {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal#parse(java.lang.String)}.
+	 * @throws FormatoInvalidoException 
 	 */
-	@Test
-	public final void testParseException() {
+	@Test(expected=FormatoInvalidoException.class)
+	public final void testParseException() throws FormatoInvalidoException {
 		String input = "-19, 12e15";
-		try {
-			LatLongDecimal.parse(input);
-			fail("Deveria dar exceção FormatoInvalidoException");
-		} catch (FormatoInvalidoException e) {
-			assertNotNull(e);
-		}
+		LatLongDecimal.parse(input); // $COVERAGE-IGNORE$
 	}
 
 	/**
