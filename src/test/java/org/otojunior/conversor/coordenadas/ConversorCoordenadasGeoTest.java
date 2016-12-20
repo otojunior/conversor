@@ -99,7 +99,7 @@ public class ConversorCoordenadasGeoTest {
 	@Test
 	public final void testToDecimal() {
 		ComponenteGeografico latitude = ComponenteGeografico.valueOf(19, 56, 2.083, EnumHemisferio.SUL);
-		ComponenteGeografico longitude = ComponenteGeografico.valueOf(43, 55, 47.05, EnumHemisferio.OESTE);;
+		ComponenteGeografico longitude = ComponenteGeografico.valueOf(43, 55, 47.05, EnumHemisferio.OESTE);
 		LatLongGeografico latLongGeo = LatLongGeografico.valueOf(latitude, longitude);
 		
 		LatLongDecimal latLongDec = ConversorCoordenadasGeo.getInstance().toDecimal(latLongGeo);

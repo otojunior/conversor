@@ -4,6 +4,7 @@
 package org.otojunior.conversor;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
@@ -19,6 +20,7 @@ public class AppTest {
 	@Test
 	public final void testMainSemArgs() {
 		App.main(ArrayUtils.EMPTY_STRING_ARRAY);
+		assertTrue(true);
 	}
 	
 	/**
@@ -27,6 +29,7 @@ public class AppTest {
 	@Test
 	public final void testMainComArgs() {
 		App.main(new String[] { "-19.933912, -43.929736" });
+		assertTrue(true);
 	}
 	
 	/**
@@ -35,6 +38,7 @@ public class AppTest {
 	@Test
 	public final void testMainComArgInvalido() {
 		App.main(new String[] { "-19.933912, -43." });
+		assertTrue(true);
 	}
 	
 	/**

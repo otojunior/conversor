@@ -43,20 +43,20 @@ public class LatLongDecimal {
 	/**
 	 * <p>parse.</p>
 	 *
-	 * @param string a {@link java.lang.String} object.
+	 * @param input a {@link java.lang.String} object.
 	 * @throws org.otojunior.conversor.coordenadas.exception.FormatoInvalidoException if any.
 	 * @return a {@link org.otojunior.conversor.coordenadas.componentes.LatLongDecimal} object.
 	 */
-	public static LatLongDecimal parse(String string) throws FormatoInvalidoException {
+	public static LatLongDecimal parse(String input) throws FormatoInvalidoException {
 		double latitude = 0;
 		double longitude = 0;
 		String regex = "^-?\\d{1,3}.\\d+,\\s-?\\d{1,3}.\\d+$";
 		boolean formatoInvalido = true;
 
-		if (StringUtils.isNotBlank(string)) {
-			string = string.trim();
-			if (string.matches(regex)) {
-				StringTokenizer tk = new StringTokenizer(string, ",");
+		if (StringUtils.isNotBlank(input)) {
+			String trimmed = input.trim();
+			if (trimmed.matches(regex)) {
+				StringTokenizer tk = new StringTokenizer(trimmed, ",");
 				if (tk.hasMoreTokens()) {
 					String strdouble = tk.nextToken().trim();
 					latitude = Double.parseDouble(strdouble);
