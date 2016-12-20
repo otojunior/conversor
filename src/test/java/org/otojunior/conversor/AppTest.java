@@ -3,6 +3,8 @@
  */
 package org.otojunior.conversor;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
@@ -39,7 +41,7 @@ public class AppTest {
 	 * Test method for {@link org.otojunior.conversor.App#main(java.lang.String[])}.
 	 */
 	@Test
-	public final void testMainComGui() {
-		App.main(new String[] { "-gui" });
+	public final void testConstrutor() {
+		assertNotNull(new App());
 	}
 }

@@ -61,7 +61,7 @@ public class App {
 				}
 			}
 		} catch (FormatoInvalidoException e) {
-			LOG.error(e.getMessage(), e);
+			LOG.error(e.getMessage());
 		}
 	}
 }
