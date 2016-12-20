@@ -1,6 +1,6 @@
 package org.otojunior.conversor.coordenadas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.otojunior.conversor.coordenadas.componentes.ComponenteGeografico;
