@@ -263,6 +263,24 @@
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>4.3.0</version>
 			</plugin>
+			
+			<plugin>
+				<groupId>com.gavinmogan</groupId>
+			    <artifactId>codacy-maven-plugin</artifactId>
+			    <version>1.0.3</version>
+			    <executions>
+			    	<execution>
+			    		<goals>
+			    			<goal>coverage</goal>
+			    		</goals>
+			    		<configuration>
+					    	<coverageReportFile>target/site/jacoco/jacoco.xml</coverageReportFile>
+					    	<projectToken>4f56fb080b83441494c31f1180164d25</projectToken>
+					    	<apiToken>4f56fb080b83441494c31f1180164d25</apiToken>
+			    		</configuration>
+			    	</execution>
+			    </executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
