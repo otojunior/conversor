@@ -33,3 +33,14 @@ Conversor de Unidades
 
 ```
 **projectToken** e **apiToken** são obtidos do projeto no Codacy.
+
+No arquivo **.travis.yml**, deve-se acresecntar as linhas:
+
+```
+install: true
+
+script:  mvn clean test jacoco:report
+
+after_success:
+  - mvn coveralls:report
+```
