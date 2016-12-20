@@ -85,8 +85,10 @@ public class ComponenteGeografico {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 	
-	/** 
-	 * 
+	/**
+	 * <p>toStringSimples.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String toStringSimples() {
 		StringBuilder str = new StringBuilder();

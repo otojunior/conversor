@@ -26,7 +26,9 @@ public enum EnumHemisferio {
 	}
 	
 	/**
-	 * 
+	 * <p>Getter for the field <code>sigla</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String getSigla() {
 		return sigla;

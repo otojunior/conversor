@@ -34,10 +34,10 @@
 		<plugin.version.maven-shade-plugin>2.3</plugin.version.maven-shade-plugin>
 		<plugin.version.maven-compiler-plugin>3.1</plugin.version.maven-compiler-plugin>
 		<plugin.version.maven-source-plugin>2.2.1</plugin.version.maven-source-plugin>
-		<plugin.version.maven-javadoc-plugin>2.9.1</plugin.version.maven-javadoc-plugin>
+		<plugin.version.maven-javadoc-plugin>2.10.4</plugin.version.maven-javadoc-plugin>
 		<plugin.version.maven-surefire-plugin>2.16</plugin.version.maven-surefire-plugin>
 		<plugin.version.maven-release-plugin>2.5</plugin.version.maven-release-plugin>
-		<plugin.version.sonar-maven3-plugin>4.4</plugin.version.sonar-maven3-plugin>
+		<plugin.version.jacoco-maven-plugin>0.7.8</plugin.version.jacoco-maven-plugin>
 	</properties>
 
 	<!-- 
@@ -234,7 +234,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 			    <artifactId>jacoco-maven-plugin</artifactId>
-			    <version>0.7.8</version>
+			    <version>${plugin.version.jacoco-maven-plugin}</version>
 			    <executions>
 			    	<execution>
 			    		<id>id-jacoco-prepare-agent</id>
