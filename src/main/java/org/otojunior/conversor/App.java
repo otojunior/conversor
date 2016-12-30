@@ -1,10 +1,13 @@
 package org.otojunior.conversor;
 
-import java.util.StringTokenizer;
-
 import javax.swing.JOptionPane;
 
-import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.apache.commons.lang3.StringUtils;
 import org.otojunior.conversor.coordenadas.componentes.LatLongDecimal;
 import org.otojunior.conversor.coordenadas.componentes.LatLongGeografico;
@@ -30,19 +33,45 @@ public class App {
 	 * @param args Command line arguments.
 	 */
 	public static void main(String[] args) {
-		LOG.info("conversor Application.");
+		/*
+		 * Opções da linha de comando. 
+		 */
+		Options options = new Options();
+		options.addOption("g", "gui", false, "Executa o conversor através de uma interface gráfica");
+		options.addOption("c", "console", true, "Executa via linha de comando com argumento formato \"<latitude>, <longitude>\"");
+
+		/*
+		 * Configuração da ajuda. 
+		 */
+		HelpFormatter fmt = new HelpFormatter();
+		String sintaxe = "java -jar conversor-<versao>.jar <opções>";
 		
-		String arg = ArrayUtils.toString(args, StringUtils.EMPTY);
-		String input = StringUtils.EMPTY;
-		
-		if ("{-gui}".equals(arg)) {
-			input = JOptionPane.showInputDialog("Latitude e Longitude Decimais (Google Maps)");
-		} else {
-			StringTokenizer tk = new StringTokenizer(arg, "{}");
-			if (tk.hasMoreTokens()) {
-				input = tk.nextToken().trim();
+		/*
+		 * Seleção de execução com base na opção selecionada.
+		 */
+		try {
+			CommandLineParser parser = new DefaultParser();
+			CommandLine cmd = parser.parse(options, args);
+			if (cmd.getOptions().length > 0) {
+				execute(cmd, cmd.hasOption('g'));
+			} else {
+				fmt.printHelp(sintaxe, options);
 			}
+		} catch (ParseException e) {
+			LOG.warn(e.getMessage());
+			fmt.printHelp(sintaxe, options);
 		}
+	}
+	
+	/**
+	 * 
+	 * @param cmd
+	 * @param gui
+	 */
+	private static void execute(CommandLine cmd, boolean gui) {
+		String input = gui ?
+			JOptionPane.showInputDialog("Latitude e Longitude Decimais (Google Maps)") :
+			cmd.getOptionValue('c');
 		
 		try {
 			if (StringUtils.isNotBlank(input)) {
@@ -54,7 +83,7 @@ public class App {
 					append(System.getProperty("line.separator")).
 					append(latLongGeo.getLongitude().toStringSimples());
 				
-				if ("{-gui}".equals(arg)) {
+				if (gui) {
 					JOptionPane.showMessageDialog(null, str.toString());
 				} else {
 					System.out.println(str.toString());

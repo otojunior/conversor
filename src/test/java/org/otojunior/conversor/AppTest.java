@@ -18,8 +18,16 @@ public class AppTest {
 	 * Test method for {@link org.otojunior.conversor.App#main(java.lang.String[])}.
 	 */
 	@Test
-	public final void testMainSemArgs() {
-		App.main(ArrayUtils.EMPTY_STRING_ARRAY);
+	public final void testConstrutor() {
+		assertNotNull(new App());
+	}
+	
+	/**
+	 * Test method for {@link org.otojunior.conversor.App#main(java.lang.String[])}.
+	 */
+	@Test
+	public final void testMainComArgConsoleCompleto() {
+		App.main(new String[] { "--console", "-19.933912, -43.929736" });
 		assertTrue(true);
 	}
 	
@@ -27,8 +35,8 @@ public class AppTest {
 	 * Test method for {@link org.otojunior.conversor.App#main(java.lang.String[])}.
 	 */
 	@Test
-	public final void testMainComArgs() {
-		App.main(new String[] { "-19.933912, -43.929736" });
+	public final void testMainComArgConsoleReduzido() {
+		App.main(new String[] { "-c", "-19.933912, -43.929736" });
 		assertTrue(true);
 	}
 	
@@ -37,7 +45,7 @@ public class AppTest {
 	 */
 	@Test
 	public final void testMainComArgInvalido() {
-		App.main(new String[] { "-19.933912, -43." });
+		App.main(new String[] { "-c", "-19.933912, -43." });
 		assertTrue(true);
 	}
 	
@@ -45,7 +53,17 @@ public class AppTest {
 	 * Test method for {@link org.otojunior.conversor.App#main(java.lang.String[])}.
 	 */
 	@Test
-	public final void testConstrutor() {
-		assertNotNull(new App());
+	public final void testMainComArgOptionInvalida() {
+		App.main(new String[] { "-x" });
+		assertTrue(true);
+	}
+	
+	/**
+	 * Test method for {@link org.otojunior.conversor.App#main(java.lang.String[])}.
+	 */
+	@Test
+	public final void testMainSemArgs() {
+		App.main(ArrayUtils.EMPTY_STRING_ARRAY);
+		assertTrue(true);
 	}
 }
