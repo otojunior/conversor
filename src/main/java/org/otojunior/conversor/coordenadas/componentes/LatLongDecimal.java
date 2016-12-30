@@ -3,8 +3,6 @@
  */
 package org.otojunior.conversor.coordenadas.componentes;
 
-import java.util.StringTokenizer;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -56,15 +54,9 @@ public class LatLongDecimal {
 		if (StringUtils.isNotBlank(input)) {
 			String trimmed = input.trim();
 			if (trimmed.matches(regex)) {
-				StringTokenizer tk = new StringTokenizer(trimmed, ",");
-				if (tk.hasMoreTokens()) {
-					String strdouble = tk.nextToken().trim();
-					latitude = Double.parseDouble(strdouble);
-				}
-				if (tk.hasMoreTokens()) {
-					String strdouble = tk.nextToken().trim();
-					longitude = Double.parseDouble(strdouble);
-				}
+				String[] sp = StringUtils.split(trimmed, ',');
+				latitude = Double.parseDouble(sp[0].trim());
+				longitude = Double.parseDouble(sp[1].trim());
 				formatoInvalido = false;
 			}
 		}
