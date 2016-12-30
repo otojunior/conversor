@@ -4,7 +4,7 @@
 
 	<groupId>org.otojunior</groupId>
 	<artifactId>conversor</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Project conversor</name>
@@ -48,7 +48,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/otojunior/conversor.git</connection>
 		<developerConnection>scm:git:git@github.com:otojunior/conversor.git</developerConnection>
-	  <tag>v1.0.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<distributionManagement>
